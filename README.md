@@ -1,154 +1,225 @@
-# Marketing Skills & Neural AI Agent Suite 🚀
+# Marketing Skills for AI Agents
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Agent Skills Spec](https://img.shields.io/badge/Agent_Skills_Spec-v1.0-emerald.svg)](https://agentskills.io)
-[![Claude Code Plugin](https://img.shields.io/badge/Claude_Code-Plugin_Ready-7C3AED.svg)](#option-1-claude-code-plugin)
-[![OpenAI Codex Plugin](https://img.shields.io/badge/OpenAI_Codex-Plugin_Ready-10B981.svg)](#option-2-openai-codex-plugin)
-[![CLI Tools](https://img.shields.io/badge/CLI_Tools-51_Zero--Dep-orange.svg)](tools/REGISTRY.md)
+[![Version](https://img.shields.io/badge/version-2.10.0-blue.svg)](VERSIONS.md)
+[![Agent Skills Spec](https://img.shields.io/badge/spec-Agent%20Skills-0052CC.svg)](https://agentskills.io)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Claude Code](https://img.shields.io/badge/plugin-Claude%20Code-7C3AED.svg)](#claude-code-plugin)
+[![Codex Plugin](https://img.shields.io/badge/plugin-OpenAI%20Codex-10A37F.svg)](#codex-plugin)
 
-A comprehensive collection of **95+ production-ready AI Agent Skills**, **51 Zero-Dependency Node.js CLI Tools**, **MCP Protocol Adapters**, and dual **Claude Code & OpenAI Codex Plugins**. Built for technical marketers, founders, and growth engineers who want AI coding agents to execute conversion optimization, copywriting, SEO, paid acquisition, revenue operations, and growth loops autonomously.
+A comprehensive suite of **49 specialized AI Agent Skills**, **51 Zero-Dependency CLI Tools**, and **MCP Integrations** built for technical marketers, founders, and AI coding agents. 
 
----
-
-## ⚡ Quick Start (One-Command Install)
-
-Install skills directly across any supported agent (Claude Code, OpenAI Codex, Cursor, Antigravity, Windsurf):
-
-```bash
-# Install all skills to your project
-npx skills add imMamdouhaboammar/marketingskills
-
-# Or install specific skills
-npx skills add imMamdouhaboammar/marketingskills --skill cro copywriting seo-audit
-
-# List all available skills
-npx skills add imMamdouhaboammar/marketingskills --list
-```
+Designed to equip agents like **Claude Code**, **OpenAI Codex**, **Cursor**, **Windsurf**, and **Gemini** with expert-level frameworks for Conversion Rate Optimization (CRO), SEO, AI-Search Optimization (GEO), Paid Ads, Revenue Operations (RevOps), Cold Email, Copywriting, Product Marketing, and Growth Engineering.
 
 ---
 
-## 🧠 Neural Connection Architecture
+## 📋 Table of Contents
 
-This repository operates on a 4-Layer **Neural Connection Architecture** ([`NEURAL_SYSTEM.md`](NEURAL_SYSTEM.md)). The central context nucleus (`product-marketing`) activates first, routing signals to specialized intelligence clusters, domain skills, and execution synapses.
-
-```
-                    ┌─────────────────────────────────────────┐
-                    │     Layer 1: Context Nucleus            │
-                    │        product-marketing                │
-                    └────────────────────┬────────────────────┘
-                                         │
-        ┌────────────────────────────────┼────────────────────────────────┐
-        ▼                                ▼                                ▼
-┌───────────────────────┐    ┌───────────────────────┐    ┌───────────────────────┐
-│ Layer 2: Intelligence │    │  Layer 3: Domain      │    │  Layer 4: Execution   │
-│ Strategic & Analytics │ ➔  │  CRO, SEO, Copy, Ads  │ ➔  │ 51 CLI Tools + MCPs   │
-│ Research & Psychology │    │  Growth & Virality    │    │ (tools/clis/*.js)     │
-└───────────────────────┘    └───────────────────────┘    └───────────────────────┘
-```
-
-> 📘 Read the full specification & synaptic map in [NEURAL_SYSTEM.md](NEURAL_SYSTEM.md).
+- [🧠 Neural System Architecture](#-neural-system-architecture)
+- [✨ Key Capabilities](#-key-capabilities)
+- [📦 Available Skills (49 Skills)](#-available-skills-49-skills)
+- [🛠️ Execution Tools & Integrations (51 CLIs + MCP)](#️-execution-tools--integrations-51-clis--mcp)
+- [🚀 Quick Start & Installation](#-quick-start--installation)
+  - [Option 1: Vercel Skills CLI (Recommended)](#option-1-vercel-skills-cli-recommended)
+  - [Option 2: Claude Code Plugin](#option-2-claude-code-plugin)
+  - [Option 3: OpenAI Codex Plugin](#option-3-openai-codex-plugin)
+  - [Option 4: Cross-Agent Universal Copy (.agents/skills)](#option-4-cross-agent-universal-copy-agentsskills)
+- [🧪 Verification & Testing](#-verification--testing)
+- [📄 License & Credits](#-license--credits)
 
 ---
 
-## 🧩 Plugin Marketplace Support
+## 🧠 Neural System Architecture
 
-### Option 1: Claude Code Plugin
-Install directly via Claude Code's native plugin manager:
-```bash
-/plugin marketplace add imMamdouhaboammar/marketingskills
-/plugin install marketing-skills
+All skills and execution tools in this repository form an interconnected **Neural Connection Network**. The `product-marketing` skill serves as the central context nucleus, propagating brand positioning, target personas, and value propositions across all specialized cognitive clusters down to CLI motor execution synapses.
+
+```
+                      ┌──────────────────────────────────────────────────────────┐
+                      │              AGENT INTERFACE GATEWAYS                    │
+                      │   Claude Code (/plugin)  │  Codex (.codex-plugin)       │
+                      │   Universal Spec (.agents/skills)                        │
+                      └──────────────────────────┬───────────────────────────────┘
+                                                 │ (Signal Ingestion)
+                                                 ▼
+                      ┌──────────────────────────────────────────────────────────┐
+                      │            LAYER 1: CORE CONTEXT NUCLEUS                 │
+                      │                 product-marketing                        │
+                      │       (Positioning, ICP, Value Prop, Product Brief)      │
+                      └──────────────────────────┬───────────────────────────────┘
+                                                 │
+                   ┌─────────────────────────────┴─────────────────────────────┐
+                   ▼                                                           ▼
+┌───────────────────────────────────────────┐             ┌───────────────────────────────────────────┐
+│   LAYER 2A: STRATEGIC INTELLIGENCE        │             │   LAYER 2B: ANALYTICS & ATTRIBUTION       │
+│  customer-research │ marketing-psychology │             │    analytics  │  attribution  │  ab-testing │
+│  competitor-profiling │ competitors       │             └─────────────────────┬─────────────────────┘
+│  marketing-plan │ marketing-council       │                                   │
+└──────────────────┬────────────────────────┘                                   │
+                   │                                                            │
+ ┌─────────────────┼───────────────────────────┬────────────────────────────────┤
+ ▼                 ▼                           ▼                                ▼
+┌─────────────────────┐ ┌─────────────────────────┐ ┌───────────────────────┐ ┌───────────────────────┐
+│  LAYER 3.1: SEO &   │ │ LAYER 3.2: CONVERSION   │ │ LAYER 3.3: COPY &     │ │ LAYER 3.4: PAID &     │
+│     DISCOVERY       │ │      ENGINEERING        │ │   MEDIA GENERATION    │ │     GROWTH LOOPS      │
+└──────────┬──────────┘ └────────────┬────────────┘ └───────────┬───────────┘ └───────────┬───────────┘
+           │                         │                          │                         │
+           └─────────────────────────┼──────────────────────────┴─────────────────────────┘
+                                     │ (Synaptic Motor Trigger)
+                                     ▼
+                      ┌──────────────────────────────────────────────────────────┐
+                      │             LAYER 4: MOTOR EXECUTION SYNAPSES            │
+                      │  51 Zero-Dependency Node.js CLIs + Native MCP & Composio │
+                      └──────────────────────────────────────────────────────────┘
 ```
 
-### Option 2: OpenAI Codex Plugin
-Install via OpenAI Codex plugin manifests (`.codex-plugin/plugin.json` & `.codex-plugin/marketplace.json`):
-```bash
-/plugin marketplace add imMamdouhaboammar/marketingskills
-/plugin install marketing-skills
-```
+> Read the full architectural specification in **[`NEURAL_SYSTEM.md`](NEURAL_SYSTEM.md)**.
 
 ---
 
-## 📚 Core Skills Index (49 Core Skills)
+## ✨ Key Capabilities
+
+- 🎯 **Conversion Engineering & CRO**: Audit landing pages, optimize signup flows, design in-app paywalls, and architect A/B experiments.
+- 🔍 **SEO & Generative Engine Optimization (GEO)**: Optimize for traditional Google search and AI search engines (ChatGPT, Perplexity, Gemini, Claude).
+- ✍️ **High-Converting Copywriting**: Frameworks for homepages, landing pages, cold emails, lifecycle email flows, and social content.
+- 📈 **Growth Engineering & Virality**: Build viral referral programs, lead magnets, free tools, cancellation flows, and co-marketing partnerships.
+- ⚙️ **Revenue Operations & GTM**: Lead scoring, sales enablement collateral, pricing strategy, launch playbooks, and competitive battlecards.
+
+---
+
+## 📦 Available Skills (49 Skills)
 
 | Skill | Category | Description |
 |-------|----------|-------------|
-| [product-marketing](skills/product-marketing/) | Nucleus | Foundation context document (read by all skills first) for product brief, positioning, and target ICP |
-| [cro](skills/cro/) | Conversion | Conversion rate optimization audit and heuristic analysis for pages and forms |
-| [copywriting](skills/copywriting/) | Copy & Content | Conversion copy, landing pages, homepages, feature pages, and headline formulas |
-| [copy-editing](skills/copy-editing/) | Copy & Content | Edits, polishes, and refreshes existing marketing copy and content |
-| [seo-audit](skills/seo-audit/) | SEO & Discovery | Comprehensive technical, on-page, and content SEO audits |
-| [ai-seo](skills/ai-seo/) | SEO & Discovery | Optimizes content for AI search engines (Perplexity, ChatGPT, AI Overviews) |
-| [site-architecture](skills/site-architecture/) | SEO & Discovery | URL structure, internal linking, and page hierarchy mapping |
-| [programmatic-seo](skills/programmatic-seo/) | SEO & Discovery | Template-driven landing pages at scale from structured datasets |
-| [schema](skills/schema/) | SEO & Discovery | JSON-LD structured data implementation (Product, FAQ, Article, Organization) |
-| [ads](skills/ads/) | Paid Acquisition | Google Ads, Meta Ads, LinkedIn Ads campaign setup, structure, and bidding |
-| [ad-creative](skills/ad-creative/) | Paid Acquisition | Ad creative generation — headlines, primary text, hooks, and visual prompts |
-| [analytics](skills/analytics/) | Analytics | Tracking plans, GA4, Mixpanel, event naming, and conversion measurement |
-| [attribution](skills/attribution/) | Analytics | Multi-touch attribution modeling, UTM parameters, and channel performance |
-| [ab-testing](skills/ab-testing/) | Experimentation | Experiment design, sample size calculation, hypothesis framing, and test analysis |
-| [cold-email](skills/cold-email/) | B2B Outreach | High-converting B2B cold email copy, follow-up sequences, and reply-rate optimization |
-| [emails](skills/emails/) | Lifecycle Email | Drip campaigns, onboarding emails, win-back flows, and newsletter design |
-| [social](skills/social/) | Content & Media | Social content strategy, LinkedIn posts, X/Twitter threads, and engagement loops |
-| [video](skills/video/) | Content & Media | Programmatic video scripts, short-form video concepts, and AI video prompts |
-| [image](skills/image/) | Content & Media | Marketing image generation prompts, social cards, hero graphics, and visual assets |
-| [sms](skills/sms/) | Messaging | SMS marketing flows, abandoned cart texts, compliance, and event notifications |
-| [referrals](skills/referrals/) | Growth Loops | Referral program design, affiliate mechanics, reward structures, and viral coefficient optimization |
-| [free-tools](skills/free-tools/) | Growth Engineering | Lead-gen free tools, calculators, widgets, and viral interactive tools |
-| [churn-prevention](skills/churn-prevention/) | Retention | Cancellation flows, save offers, exit surveys, and dunning / failed payment recovery |
-| [community-marketing](skills/community-marketing/) | Growth | Community building, Discord/Slack engagement, advocate programs, and user groups |
-| [lead-magnets](skills/lead-magnets/) | Lead Generation | High-converting lead magnets, ebooks, templates, and gated asset strategy |
-| [co-marketing](skills/co-marketing/) | Partnerships | Co-marketing campaign design, partner webinars, cross-promotions, and integration launches |
-| [revops](skills/revops/) | Sales & Operations | Lead lifecycle, MQL/SQL scoring, CRM pipelines, and revenue operations alignment |
-| [sales-enablement](skills/sales-enablement/) | Sales | Sales decks, one-pagers, battlecards, objection handling scripts, and demo flows |
-| [launch](skills/launch/) | GTM & Launch | Product Hunt, Hacker News, press, and multi-channel launch execution playbooks |
-| [pricing](skills/pricing/) | Monetization | Pricing strategy, value metric selection, tier packaging, and monetization audits |
-| [competitors](skills/competitors/) | Competitive | Competitor comparison pages, "VS" pages, alternative landing pages, and positioning |
-| [competitor-profiling](skills/competitor-profiling/) | Competitive | URL-based competitive profiling, teardowns, and positioning matrix extraction |
-| [prospecting](skills/prospecting/) | Outbound | Target prospect list building, ICP discovery, and public demand-signal mining |
-| [offers](skills/offers/) | Offer Design | Offer creation, risk reversal, bonus stack, pricing psychology, and value framing |
-| [public-relations](skills/public-relations/) | Earned Media | Press releases, media pitching lists, journalist outreach, and embargo timing |
-| [directory-submissions](skills/directory-submissions/) | Growth | Directory submission strategy (SaaS, AI agents, Product Hunt, LaunchingNext) |
-| [signup](skills/signup/) | Conversion | Frictionless signup flow, friction audit, and registration conversion optimization |
-| [onboarding](skills/onboarding/) | Conversion | Post-signup onboarding, activation milestones, product tour, and time-to-value |
-| [popups](skills/popups/) | Conversion | Exit-intent popups, slide-ins, banners, and lead capture overlay design |
-| [paywalls](skills/paywalls/) | Conversion | In-app paywalls, upgrade modals, feature gates, and trial end conversion flows |
-| [aso](skills/aso/) | Mobile Growth | App Store Optimization (ASO) for iOS App Store and Google Play |
-| [marketing-ideas](skills/marketing-ideas/) | Brainstorming | Growth tactic generator, marketing experiment ideation, and campaign concepts |
-| [marketing-psychology](skills/marketing-psychology/) | Behavioral Sci | Cialdini principles, mental models, cognitive bias application in marketing |
-| [customer-research](skills/customer-research/) | User Research | Voice-of-customer synthesis, interview scripts, survey design, and pain mining |
-| [marketing-plan](skills/marketing-plan/) | Strategy | Full AARRR-structured marketing strategy and execution roadmap |
-| [marketing-council](skills/marketing-council/) | Advisory Board | Multi-expert advisory panel simulation (CRO, Copy, SEO, Paid Ads, Brand) |
-| [marketing-loops](skills/marketing-loops/) | Autonomous Loop | Recurring self-running AI agent marketing execution loops |
+| [**`product-marketing`**](skills/product-marketing/) | **Core Nucleus** | Establishes the foundational product marketing context read by all other skills. |
+| [**`ab-testing`**](skills/ab-testing/) | Paid & Analytics | Plan, design, and run hypothesis-driven A/B tests and growth experiments. |
+| [**`ad-creative`**](skills/ad-creative/) | Paid & Ads | Generate, iterate, and scale high-performing ad copy and creative formats. |
+| [**`ads`**](skills/ads/) | Paid & Ads | Campaign management across Google Ads, Meta, LinkedIn Ads, TikTok, and Twitter. |
+| [**`ai-seo`**](skills/ai-seo/) | Search & GEO | Optimize content for AI search engines, LLM citations, and AI Overviews. |
+| [**`analytics`**](skills/analytics/) | Paid & Analytics | Audit and implement tracking schemas across GA4, Mixpanel, Segment, PostHog. |
+| [**`aso`**](skills/aso/) | Search & App | App Store Optimization (ASO) for Apple App Store and Google Play listings. |
+| [**`attribution`**](skills/attribution/) | Paid & Analytics | Multi-touch attribution modeling and conversion signal reconciliation. |
+| [**`churn-prevention`**](skills/churn-prevention/) | Growth & Retention | Build cancellation flows, save offers, and payment recovery mechanisms. |
+| [**`co-marketing`**](skills/co-marketing/) | Growth & Partnerships | Identify co-marketing partners and structure joint marketing campaigns. |
+| [**`cold-email`**](skills/cold-email/) | Copy & Outreach | Draft B2B cold outreach sequences optimized for high reply rates. |
+| [**`community-marketing`**](skills/community-marketing/) | Growth & Community | Build and leverage communities on Reddit, Discord, and Slack to drive growth. |
+| [**`competitor-profiling`**](skills/competitor-profiling/) | Strategy & Intel | Deep URL-based competitor analysis, positioning matrices, and teardowns. |
+| [**`competitors`**](skills/competitors/) | Strategy & Sales | Build comparison pages ("vs") and alternative landing pages for SEO/Sales. |
+| [**`content-strategy`**](skills/content-strategy/) | Content & Search | Topic cluster modeling, editorial planning, and content gap identification. |
+| [**`copy-editing`**](skills/copy-editing/) | Copy & Content | Edit and polish marketing copy for conciseness, tone, and conversion power. |
+| [**`copywriting`**](skills/copywriting/) | Copy & Content | Write persuasive landing page copy, value propositions, and messaging. |
+| [**`cro`**](skills/cro/) | Conversion Engineering | Complete Conversion Rate Optimization audit for landing pages and web flows. |
+| [**`customer-research`**](skills/customer-research/) | Strategy & Intel | Synthesize customer interviews, reviews, and survey feedback into actionable insights. |
+| [**`directory-submissions`**](skills/directory-submissions/) | GTM & Outreach | Submit products to SaaS, AI agent, startup, and review directories. |
+| [**`emails`**](skills/emails/) | Copy & Lifecycle | Design automated email drip sequences, onboarding flows, and newsletters. |
+| [**`free-tools`**](skills/free-tools/) | Growth & Engineering | Plan and design free tools for lead generation and programmatic SEO. |
+| [**`image`**](skills/image/) | Media & Creative | Generate and optimize marketing images, social cards, and ad visuals. |
+| [**`influencer-marketing`**](skills/influencer-marketing/) | Growth & Paid | Discover creators, structure creator briefs, and track ROI. |
+| [**`launch`**](skills/launch/) | GTM & Strategy | Product Hunt, Hacker News, press, and email launch playbooks. |
+| [**`lead-magnets`**](skills/lead-magnets/) | Growth & Conversion | Design high-converting lead magnets, cheatsheets, and gated assets. |
+| [**`marketing-council`**](skills/marketing-council/) | Strategy & Intel | Multi-agent board of advisors simulating CMO, CRO, SEO, and Brand experts. |
+| [**`marketing-ideas`**](skills/marketing-ideas/) | Strategy & Intel | Brainstorm growth experiments, channel tactics, and marketing initiatives. |
+| [**`marketing-loops`**](skills/marketing-loops/) | Strategy & Ops | Architect self-running, autonomous AI marketing loops and recurring tasks. |
+| [**`marketing-plan`**](skills/marketing-plan/) | Strategy & GTM | Comprehensive AARRR-structured marketing strategy and roadmap. |
+| [**`marketing-psychology`**](skills/marketing-psychology/) | Strategy & Intel | Apply behavioral economics, cognitive biases, and psychological triggers. |
+| [**`offers`**](skills/offers/) | Conversion & Sales | Structure high-perceived-value offers, risk reversals, and guarantee framing. |
+| [**`onboarding`**](skills/onboarding/) | Conversion Engineering | Post-signup activation flows, product tours, and time-to-value optimization. |
+| [**`paywalls`**](skills/paywalls/) | Conversion Engineering | Design and test in-app paywalls, upgrade modals, and feature gates. |
+| [**`popups`**](skills/popups/) | Conversion Engineering | High-converting popups, slide-ins, exit-intent modals, and banners. |
+| [**`pricing`**](skills/pricing/) | Strategy & GTM | Pricing model design, tier packaging, value metric selection, and monetization. |
+| [**`programmatic-seo`**](skills/programmatic-seo/) | Search & Engineering | Scale landing pages dynamically using database-driven templates. |
+| [**`prospecting`**](skills/prospecting/) | Sales & Outreach | Demand-signal prospecting, lead list building, and ICP qualification. |
+| [**`public-relations`**](skills/public-relations/) | GTM & Outreach | Press release writing, media list curation, embargo pitches, and media relations. |
+| [**`referrals`**](skills/referrals/) | Growth & Retention | Design word-of-mouth viral loops, referral rewards, and affiliate programs. |
+| [**`revops`**](skills/revops/) | Sales & Operations | Revenue operations, lead lifecycle stages, and CRM handoff automation. |
+| [**`sales-enablement`**](skills/sales-enablement/) | Sales & Strategy | Sales decks, battlecards, one-pagers, demo scripts, and objection handlers. |
+| [**`schema`**](skills/schema/) | Search & Technical | JSON-LD schema markup generation (Product, FAQ, Article, Organization). |
+| [**`seo-audit`**](skills/seo-audit/) | Search & Technical | Comprehensive technical, on-page, and content SEO audit. |
+| [**`signup`**](skills/signup/) | Conversion Engineering | Frictionless registration form design and friction reduction. |
+| [**`site-architecture`**](skills/site-architecture/) | Search & Technical | Information architecture, URL structure, and internal linking hierarchy. |
+| [**`sms`**](skills/sms/) | Copy & Lifecycle | SMS/MMS marketing flows, transactional texts, and compliance guidelines. |
+| [**`social`**](skills/social/) | Copy & Content | Multi-platform social content for LinkedIn, Twitter/X, and Instagram. |
+| [**`video`**](skills/video/) | Media & Creative | Video scripts, AI avatar generation (HeyGen), and programmatic video. |
 
 ---
 
-## 🛠️ Execution Tools Registry (`tools/`)
+## 🛠️ Execution Tools & Integrations (51 CLIs + MCP)
 
-The repository includes **51 Zero-Dependency Node.js CLI Tools** (`tools/clis/`) and MCP integration guides (`tools/integrations/`):
+This repository includes a dedicated zero-dependency tooling layer in [`tools/`](tools/) registered in [`tools/REGISTRY.md`](tools/REGISTRY.md):
 
-- **Analytics & Attribution**: `ga4.js`, `mixpanel.js`, `amplitude.js`, `segment.js`, `plausible.js`, `adobe-analytics.js`
-- **SEO & Data**: `google-search-console.js`, `semrush.js`, `ahrefs.js`, `dataforseo.js`, `keywords-everywhere.js`, `rankparse.js`
-- **Enrichment & Outbound**: `clearbit.js`, `apollo.js`, `zoominfo.js`, `clay.js`, `hunter.js`, `snov.js`, `lemlist.js`, `instantly.js`
-- **CRM & Sales**: `close.js`, `hubspot.md`, `salesforce.md`, `outreach.js`
-- **Payments & Referrals**: `stripe.js`, `paddle.js`, `rewardful.js`, `tolt.js`, `dub.js`, `mention-me.js`, `partnerstack.js`
-- **Email & SMS**: `mailchimp.js`, `customer-io.js`, `sendgrid.js`, `resend.js`, `klaviyo.js`, `postmark.js`, `kit.js`, `beehiiv.js`, `twilio.js`
-- **Ads & Social**: `google-ads.js`, `meta-ads.js`, `linkedin-ads.js`, `tiktok-ads.js`, `buffer.js`
-- **Scraping & AI Search**: `firecrawl.md`, `browserbase.md`, `exa.js`, `airops.js`
-
-> 📗 Detailed API endpoints, authentication keys, and execution examples in [`tools/REGISTRY.md`](tools/REGISTRY.md).
+- **51 Zero-Dependency Node.js CLIs (`tools/clis/*.js`)**: Execute API calls directly (`node tools/clis/ga4.js`, `node tools/clis/stripe.js`, `node tools/clis/resend.js`).
+- **Native MCP Protocol Tools**: Direct integration with MCP-enabled tools (`ga4`, `stripe`, `resend`, `mailchimp`, `google-ads`, `zapier`).
+- **Composio OAuth Layer (`tools/composio/`)**: Unified MCP server access to OAuth-heavy applications (HubSpot, Salesforce, Meta Ads, LinkedIn Ads, Slack).
 
 ---
 
-## 🧪 Validation & Quality Assurance
+## 🚀 Quick Start & Installation
 
-All skills follow the strict [Agent Skills specification](https://agentskills.io/specification.md) and pass continuous validation checks:
+### Option 1: Vercel Skills CLI (Recommended)
+
+Install skills instantly using [skills CLI](https://github.com/vercel-labs/skills):
 
 ```bash
-./validate-skills.sh
+# Install all marketing skills globally or locally
+npx skills add imMamdouhaboammar/marketing-skills
+
+# Install specific skills
+npx skills add imMamdouhaboammar/marketing-skills --skill cro copywriting seo-audit
+
+# List available skills
+npx skills add imMamdouhaboammar/marketing-skills --list
+```
+
+### Option 2: Claude Code Plugin
+
+Install directly in **Claude Code**:
+
+```bash
+# Add the marketplace
+/plugin marketplace add imMamdouhaboammar/marketing-skills
+
+# Install all skills
+/plugin install marketing-skills
+```
+
+### Option 3: OpenAI Codex Plugin
+
+Install in **OpenAI Codex** via `.codex-plugin`:
+
+```bash
+# Register marketplace in Codex
+/plugin marketplace add imMamdouhaboammar/marketing-skills
+
+# Install marketing-skills plugin
+/plugin install marketing-skills
+```
+
+### Option 4: Cross-Agent Universal Copy (.agents/skills)
+
+Copy the skills folder directly into any project using the universal `.agents/skills/` standard:
+
+```bash
+git clone https://github.com/imMamdouhaboammar/marketing-skills.git
+mkdir -p .agents/skills
+cp -r marketing-skills/skills/* .agents/skills/
 ```
 
 ---
 
-## 📄 License
+## 🧪 Verification & Testing
 
-This repository is open source under the [MIT License](LICENSE).
+Every skill in this repository strictly adheres to the [Agent Skills Specification](https://agentskills.io/specification.md). You can validate skill compliance at any time:
+
+```bash
+# Audit all skills against spec
+./validate-skills.sh
+
+# Run Node syntax check on execution CLIs
+node --check tools/clis/ga4.js
+```
+
+---
+
+## 📄 License & Credits
+
+- **License**: [MIT License](LICENSE)
+- **Created By**: Mamdouh Abo Ammar & Corey Haines
+- **Specification**: Follows the open [Agent Skills Standard](https://agentskills.io)

@@ -29,6 +29,7 @@ skills-lock.json
 .idea/
 .vscode/
 
-# Temp zips
-makerskills-main*
+# Temporary downloads
+makerskills-main/
+makerskills-main.zip
 
