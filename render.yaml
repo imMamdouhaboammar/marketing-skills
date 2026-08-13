@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: marketing-skills-mcp
+    env: docker
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 3000

@@ -1,0 +1,35 @@
+{
+  "name": "marketing-skills-mcp",
+  "version": "2.10.0",
+  "description": "Remote & Stdio MCP Server for Marketing Skills & 60+ Marketing CLI Tools",
+  "type": "module",
+  "main": "tools/remote-mcp-server.js",
+  "bin": {
+    "marketing-skills-mcp": "tools/remote-mcp-server.js"
+  },
+  "scripts": {
+    "start": "bun run tools/remote-mcp-server.js",
+    "start:remote": "bun run tools/remote-mcp-server.js",
+    "start:stdio": "bun run tools/remote-mcp-server.js --stdio",
+    "test:mcp": "bun test:mcp-check"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "marketing",
+    "seo",
+    "analytics",
+    "ads",
+    "chatgpt",
+    "claude",
+    "cursor"
+  ],
+  "author": "Corey Haines",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
