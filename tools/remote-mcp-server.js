@@ -401,20 +401,40 @@ if (isStdioMode) {
     res.json({ status: "healthy", timestamp: new Date().toISOString() });
   });
 
-  // SSE Transport Handlers
+  // SSE Transport Handlers with CORS pre-flight & Absolute URL resolution for ChatGPT Web
+  app.options("*", cors());
+
   app.get("/sse", async (req, res) => {
-    console.log(`[Remote MCP] New SSE connection established from ${req.ip}`);
-    const transport = new SSEServerTransport("/messages", res);
+    const host = req.headers["x-forwarded-host"] || req.headers.host;
+    const protocol = req.headers["x-forwarded-proto"] || req.protocol || (req.secure ? "https" : "http");
+    const messageEndpoint = `${protocol}://${host}/messages`;
+
+    console.log(`[Remote MCP] New SSE connection from ${req.ip} -> Endpoint: ${messageEndpoint}`);
+    
+    // Set explicit SSE headers
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache, no-transform");
+    res.setHeader("Connection", "keep-alive");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
+    const transport = new SSEServerTransport(messageEndpoint, res);
     transports.set(transport.sessionId, transport);
     await mcpServer.connect(transport);
 
+    // Keep-alive ping interval to prevent cloud timeouts
+    const pingInterval = setInterval(() => {
+      res.write(": ping\n\n");
+    }, 15000);
+
     req.on("close", () => {
       console.log(`[Remote MCP] SSE Connection closed (sessionId: ${transport.sessionId})`);
+      clearInterval(pingInterval);
       transports.delete(transport.sessionId);
     });
   });
 
   app.post("/messages", async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const sessionId = req.query.sessionId;
     const transport = transports.get(sessionId);
     if (transport) {
