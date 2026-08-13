@@ -401,10 +401,10 @@ if (isStdioMode) {
     res.json({ status: "healthy", timestamp: new Date().toISOString() });
   });
 
-  // SSE Transport Handlers with CORS pre-flight & Absolute URL resolution for ChatGPT Web
+  // SSE & HTTP Transport Handlers for ChatGPT Web, Claude, Cursor
   app.options("*", cors());
 
-  app.get("/sse", async (req, res) => {
+  const handleSseRequest = async (req, res) => {
     const host = req.headers["x-forwarded-host"] || req.headers.host;
     const protocol = req.headers["x-forwarded-proto"] || req.protocol || (req.secure ? "https" : "http");
     const messageEndpoint = `${protocol}://${host}/messages`;
@@ -416,6 +416,7 @@ if (isStdioMode) {
     res.setHeader("Cache-Control", "no-cache, no-transform");
     res.setHeader("Connection", "keep-alive");
     res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "*");
 
     const transport = new SSEServerTransport(messageEndpoint, res);
     transports.set(transport.sessionId, transport);
@@ -431,10 +432,37 @@ if (isStdioMode) {
       clearInterval(pingInterval);
       transports.delete(transport.sessionId);
     });
-  });
+  };
+
+  app.get("/sse", handleSseRequest);
+  app.get("/mcp", handleSseRequest);
+
+  // Handle POST requests to /sse, /mcp, and / gracefully (ChatGPT / AI probing)
+  const handlePostFallback = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    const sessionId = req.query.sessionId;
+    if (sessionId) {
+      const transport = transports.get(sessionId);
+      if (transport) {
+        return await transport.handlePostMessage(req, res);
+      }
+    }
+    res.status(200).json({
+      jsonrpc: "2.0",
+      result: {
+        status: "ok",
+        message: "Marketing Skills MCP Server. Use GET /sse or GET /mcp for SSE connection."
+      }
+    });
+  };
+
+  app.post("/sse", handlePostFallback);
+  app.post("/mcp", handlePostFallback);
 
   app.post("/messages", async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "*");
     const sessionId = req.query.sessionId;
     const transport = transports.get(sessionId);
     if (transport) {
