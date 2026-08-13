@@ -17,6 +17,16 @@
 
 ### 🌐 1. تشغيل Remote MCP للاستخدام مع ChatGPT Web
 
+#### ⚡ الرابط المباشر الشغال أونلاين (Live Production URL):
+* **رابط الاتصال المباشر (SSE Endpoint):**
+  ```text
+  https://marketingskills-2100.vercel.app/sse
+  ```
+* **رابط الفحص (Health Check):**
+  ```text
+  https://marketingskills-2100.vercel.app/health
+  ```
+
 #### 1️⃣ التشغيل المحلي (Local Testing):
 ```bash
 bun install
